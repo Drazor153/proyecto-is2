@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('projects', function (Blueprint $table) {
-            $table->id('project_id');
+        Schema::create('product_owners', function (Blueprint $table) {
+            $table->id('po_id');
             $table->string('name');
-            $table->string('category');
-            $table->string('status');
-            $table->integer('cost');
-            $table->foreignId('po_id')->references('po_id')->on('product_owners');
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('product_owners');
     }
 };

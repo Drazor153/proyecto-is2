@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
+    
+    protected $primaryKey = 'project_id';
+
+    public function productOwner()
+    {
+        return $this->belongsTo(ProductOwner::class, 'po_id');
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,8 @@ class PanelController extends Controller
 {
     public function show(): View
     {
-        return view('control-panel.show');
+        $projects = Project::all();
+        return view('control-panel.show', ['projects' => $projects] );
     }
 
     public function create(): View

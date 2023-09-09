@@ -23,7 +23,16 @@ Route::get('/home/{name}', function(string $name){
     return view('home', ['name' => $name]);
 });
 
-Route::get('/project', [PanelController::class, 'show'])->name('projects');
+Route::resource('projects', ProjectsController::class);
 
-Route::get('/project/create', [PanelController::class, 'create']);
-Route::post('/project', [ProjectsController::class, 'store'])->name('new-project');
+// Route::get('/project', [PanelController::class, 'show'])->name('projects');
+
+// Vista principal
+// Route::get('/projects', [ProjectsController::class, 'index'])->name('projects');
+
+// // Ruta para crear proyecto
+// Route::post('/projects', [ProjectsController::class, 'store'])->name('projects');
+
+// Route::get('/projects/{id}', [ProjectsController::class, 'show'])->name('projects-edit');
+// Route::patch('/projects/{id}', [ProjectsController::class, 'update'])->name('projects-update');
+// Route::delete('/projects/{id}', [ProjectsController::class, 'destroy'])->name('projects-destroy');

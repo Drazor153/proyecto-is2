@@ -5,12 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   {{-- <link rel="stylesheet" href="{{asset('css/home.css')}}"> --}}
-  @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+  @vite('resources/sass/app.scss')
   <title>@yield('title')</title>
 </head>
 <body>
+  <nav>
+    <h2>Gestor de Proyectos</h2>
+  </nav>
   @yield('content')
 
-  </footer>
+  @yield('footer-js')
+
 </body>
 </html>
