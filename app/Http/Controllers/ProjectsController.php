@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ProductOwner;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
@@ -15,7 +16,10 @@ class ProjectsController extends Controller
      */
     public function index()
     {   
-
+        if (!Auth::check()) {
+            return redirect()->route('auth.login');
+        }
+        
         if(request('search')){
             $projects = Project::where('name', 'like', '%'.request('search').'%')->get();
         }else{

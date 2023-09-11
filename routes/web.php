@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -20,16 +23,23 @@ use Illuminate\Support\Facades\Redirect;
 
 Route::get('/', function () {
     // return view('welcome');
-    return Redirect::route('projects.index');
+    return Redirect::route('auth.login');
 });
 
 // Route::get('/home/{name}', function(string $name){
 //     return view('home', ['name' => $name]);
 // });
 
+Route::get('/register', [RegisterController::class, 'show'])->name('auth.register');
+Route::post('/register', [RegisterController::class, 'register'])->name('auth.register');
 
-Route::post('projects/next', function (Request $request) {
-    
+Route::get('/login', [LoginController::class, 'show'])->name('auth.login');
+Route::post('/login', [LoginController::class, 'login'])->name('auth.login');
+
+Route::get('/logout', [LogoutController::class, 'logout'])->name('auth.logout');
+
+
+Route::post('/projects/next', function (Request $request) {
     $project = Project::find($request->project);
     $project->status = 'Finalizado';
     $project->save();
@@ -37,7 +47,7 @@ Route::post('projects/next', function (Request $request) {
     return redirect()->route('projects.index')->with('success', 'Proyecto finalizado!');
 })->name('projects.next');
 
-Route::resource('projects', ProjectsController::class);
+Route::resource('/projects', ProjectsController::class);
 
 // Route::get('/project', [PanelController::class, 'show'])->name('projects');
 
