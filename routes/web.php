@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\ProjectsController;
+use App\Models\Project;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +19,23 @@ use App\Http\Controllers\ProjectsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return Redirect::route('projects.index');
 });
 
-Route::get('/home/{name}', function(string $name){
-    return view('home', ['name' => $name]);
-});
+// Route::get('/home/{name}', function(string $name){
+//     return view('home', ['name' => $name]);
+// });
+
+
+Route::post('projects/next', function (Request $request) {
+    
+    $project = Project::find($request->project);
+    $project->status = 'Finalizado';
+    $project->save();
+
+    return redirect()->route('projects.index')->with('success', 'Proyecto finalizado!');
+})->name('projects.next');
 
 Route::resource('projects', ProjectsController::class);
 

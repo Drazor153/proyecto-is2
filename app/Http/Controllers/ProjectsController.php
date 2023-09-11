@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ProductOwner;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 class ProjectsController extends Controller
@@ -13,8 +14,14 @@ class ProjectsController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $projects = Project::all();
+    {   
+
+        if(request('search')){
+            $projects = Project::where('name', 'like', '%'.request('search').'%')->get();
+        }else{
+            $projects = Project::all(); 
+        }
+        
         return view('projects-view.index', ['projects' => $projects] );
     }
 
