@@ -8,8 +8,8 @@
   @vite(['resources/css/bootstrap.min.css', 'resources/js/bootstrap.bundle.min.js'])
   <title>@yield('title')</title>
 </head>
-<body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
+<body class="vh-100">
+  <nav class="navbar bg-dark border-bottom border-body navbar-expand-lg mb-3" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="{{ route('projects.index') }}">Gestor de Proyectos</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

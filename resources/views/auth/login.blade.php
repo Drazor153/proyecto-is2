@@ -23,6 +23,7 @@
         </ul>
     </div>
     @endif
-    <button type="submit" class="btn btn-primary">Registrarse</button>
+    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+    <a href="{{ route('auth.register') }}">Registrarse</a>
   </form>
 @endsection

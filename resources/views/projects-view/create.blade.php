@@ -2,7 +2,7 @@
 @section('title', 'Subir nuevo proyecto')
 
 @section('content')
-  <div class="container" id="project-form">
+  <div class="container py-5" id="project-form" style="max-width: 800px">
       <form action="{{route('projects.store')}}" method="POST">
         @csrf
         @if (session('success'))

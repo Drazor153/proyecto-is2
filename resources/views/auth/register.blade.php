@@ -32,5 +32,6 @@
     </div>
     @endif
     <button type="submit" class="btn btn-primary">Registrarse</button>
+    <a href="{{ route('auth.login') }}">Iniciar sesión</a>
   </form>
 @endsection

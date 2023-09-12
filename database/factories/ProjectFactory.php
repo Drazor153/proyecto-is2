@@ -28,7 +28,7 @@ class ProjectFactory extends Factory
             'category' =>$this->faker->randomElement(['Academico', 'Administrativo', 'Software']),
             'status' => 'Pendiente', 
             'cost' =>$this->faker->randomNumber(8, true), 
-            'po_id' => $this->faker->randomDigitNotNull() + 1
+            'po_id' => $this->faker->randomDigit() + 1
         ];
     }
 }

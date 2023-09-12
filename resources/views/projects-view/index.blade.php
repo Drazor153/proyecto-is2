@@ -31,7 +31,7 @@
             <td>{{ $project->name }}</td>
             <td>{{ $project->productOwner->name }}</td>
             <td>{{ $project->category }}</td>
-            <td>{{ $project->cost }}</td>
+            <td>{{ '$'.number_format($project->cost, 0, ',', '.') }}</td>
             <td>{{ $project->status }}</td>
             <td>
               <div class="row text-nowrap">

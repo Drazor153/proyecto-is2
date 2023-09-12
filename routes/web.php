@@ -20,15 +20,14 @@ use Illuminate\Support\Facades\Redirect;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// Route::get('/home/{name}', function(string $name){
+//     return view('home', ['name' => $name]);
+// });
 
 Route::get('/', function () {
     // return view('welcome');
     return Redirect::route('auth.login');
 });
-
-// Route::get('/home/{name}', function(string $name){
-//     return view('home', ['name' => $name]);
-// });
 
 Route::get('/register', [RegisterController::class, 'show'])->name('auth.register');
 Route::post('/register', [RegisterController::class, 'register'])->name('auth.register');

@@ -7,8 +7,8 @@
   @vite('resources/css/bootstrap.min.css')
   <title>@yield('title')</title>
 </head>
-<body>
-  <div class="container">
+<body class="vh-100">
+  <div class="container h-100 py-5" style="max-width: 500px">
     @yield('content')
   </div>
 </body>
